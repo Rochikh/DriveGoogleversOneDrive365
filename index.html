@@ -40,7 +40,7 @@
             font-family: var(--font-texte);
             background-color: #f4f7f6; /* Un gris très clair pour faire ressortir le blanc */
             margin: 0;
-            padding: 2em;
+            padding: 1em; /* Réduit pour la vue navigateur */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -53,7 +53,7 @@
             width: 100%;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            padding: 40px;
+            padding: 25px; /* Réduit */
             box-sizing: border-box;
         }
 
@@ -65,11 +65,11 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 3px solid var(--bleu-bf);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            padding-bottom: 15px;
+            margin-bottom: 15px; /* Réduit */
         }
         .logo img {
-            height: 60px; /* Hauteur ajustée pour le logo */
+            height: 50px; /* Réduit */
             width: auto;
             min-width: 75px;
         }
@@ -79,16 +79,42 @@
         .titre-principal h1 {
             font-family: var(--font-titre);
             font-weight: 700;
-            font-size: 2.2em;
+            font-size: 1.9em; /* Réduit */
             color: var(--bleu-bf);
             margin: 0;
         }
         .titre-principal p {
             font-family: var(--font-titre);
             font-weight: 500;
-            font-size: 1.2em;
+            font-size: 1em; /* Réduit */
             color: #555;
-            margin: 5px 0 0 0;
+            margin: 4px 0 0 0;
+        }
+
+        /* ----------------------------------- */
+        /* --- BOUTON PDF --- */
+        /* ----------------------------------- */
+        .pdf-button-container {
+            text-align: center;
+            margin: 0 0 15px 0; /* Réduit */
+        }
+        #download-pdf {
+            font-family: var(--font-titre);
+            font-weight: 500;
+            font-size: 0.9em; /* Réduit */
+            background-color: var(--bleu-bf);
+            color: var(--blanc);
+            border: none;
+            padding: 10px 20px; /* Réduit */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #download-pdf:hover {
+            background-color: var(--bleu-1);
+        }
+        #download-pdf i {
+            margin-right: 8px;
         }
 
         /* ----------------------------------- */
@@ -96,14 +122,14 @@
         /* ----------------------------------- */
         .objectif {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px; /* Réduit */
         }
         .objectif .visuel {
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 3em;
-            gap: 25px;
+            font-size: 2.5em; /* Réduit */
+            gap: 20px;
             color: var(--bleu-2);
         }
         .objectif .fa-arrow-right-long {
@@ -111,7 +137,8 @@
             font-size: 1.2em;
         }
         .objectif p {
-            font-size: 1.1em;
+            font-size: 1em; /* Réduit */
+            margin-top: 8px;
         }
 
         /* ----------------------------------- */
@@ -119,21 +146,21 @@
         /* ----------------------------------- */
         .etape {
             display: flex;
-            gap: 25px;
+            gap: 15px; /* Réduit */
             border: 2px solid var(--bleu-4);
             border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
+            padding: 12px; /* Réduit */
+            margin-bottom: 15px; /* Réduit */
             align-items: center;
         }
         .etape-numero {
             font-family: var(--font-titre);
             font-weight: 700;
-            font-size: 2em;
+            font-size: 1.6em; /* Réduit */
             color: var(--blanc);
             background-color: var(--bleu-1);
-            min-width: 60px;
-            height: 60px;
+            min-width: 45px; /* Réduit */
+            height: 45px; /* Réduit */
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -142,28 +169,28 @@
         .etape-contenu h2 {
             font-family: var(--font-titre);
             font-weight: 700;
-            font-size: 1.6em;
+            font-size: 1.4em; /* Réduit */
             color: var(--bleu-1);
-            margin: 0 0 15px 0;
+            margin: 0 0 8px 0; /* Réduit */
         }
         .etape-contenu ol {
             margin: 0;
             padding-left: 20px;
-            font-size: 1em;
-            line-height: 1.6;
+            font-size: 0.9em; /* Réduit */
+            line-height: 1.5;
         }
         .etape-contenu li::marker {
             font-weight: bold;
         }
         .etape .etape-visuel {
-            font-size: 4em;
+            font-size: 3em; /* Réduit */
             color: var(--bleu-2);
             margin-left: auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
         .etape .fa-folder-open {
             position: relative;
-            left: -15px;
+            left: -12px;
             color: var(--bleu-3);
         }
 
@@ -171,51 +198,52 @@
         /* --- BLOC "BON À SAVOIR" --- */
         /* ----------------------------------- */
         .bon-a-savoir {
-            margin-top: 40px;
+            margin-top: 20px; /* Réduit */
             background-color: var(--bleu-4);
             border-radius: 8px;
-            padding: 25px;
+            padding: 15px; /* Réduit */
         }
         .bon-a-savoir h2 {
             font-family: var(--font-titre);
             font-weight: 700;
             color: var(--bleu-bf);
             text-align: center;
-            margin: 0 0 25px 0;
+            margin: 0 0 15px 0; /* Réduit */
+            font-size: 1.4em;
         }
         .astuces {
             display: flex;
             justify-content: space-around;
-            gap: 20px;
+            gap: 15px;
             text-align: center;
         }
         .astuce {
             flex: 1;
         }
         .astuce .icon {
-            font-size: 2.5em;
+            font-size: 2em; /* Réduit */
             color: var(--bleu-1);
         }
         .astuce p {
-            font-size: 0.9em;
-            line-height: 1.5;
-            margin-top: 10px;
+            font-size: 0.85em; /* Réduit */
+            line-height: 1.4;
+            margin-top: 8px;
         }
 
         /* ----------------------------------- */
         /* --- FOOTER --- */
         /* ----------------------------------- */
         footer {
-            margin-top: 40px;
-            padding-top: 20px;
+            margin-top: 20px; /* Réduit */
+            padding-top: 15px;
             border-top: 1px solid #ccc;
             text-align: center;
-            font-size: 0.9em;
+            font-size: 0.85em; /* Réduit */
         }
         footer .icon {
             color: var(--bleu-2);
-            font-size: 1.5em;
-            margin-bottom: 10px;
+            font-size: 1.4em;
+            margin-bottom: 8px;
         }
         footer a {
             color: var(--bleu-1);
@@ -238,21 +266,32 @@
             .etape .etape-visuel { margin: 15px 0 0 0; }
             .astuces { flex-direction: column; }
         }
+
+        /* Style pour cacher le bouton lors de l'impression */
+        @media print {
+            .pdf-button-container {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="infographie">
+    <div class="infographie" id="element-to-print">
 
         <header class="header">
             <div class="logo">
-                <img src="https://www.bruxellesformation.brussels/newsletters/img/logo/2024/BF_logo_couleur.png?x29060" alt="Logo Bruxelles Formation">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAA+CAMAAAD+C/42AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAPUExURQwbP////wAAAM4AAM5mZv8AAADb4y39AAAAAFh0Uk5TAAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMzQ1Njc4OTo7PD0+P0BBQkNERUZHSElKS0xNTk9QUVJTVFVWV1hZWltcXV5fYGFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6e3x9fn+AgYKDhIWGh4iJiouMjY6PkJGSk5SVlpeYmZqbnJ2en6ChoqOkpaanqKmqq6ytrq+wsbKztLW2t7i5uru8vb6/wMHCw8TFxsfIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+/wAAA+5JREFUeF7t3Vl7E0EQB/BvLqWUIqWUIqWUWiqFlFJaaQoVpYJgFRQsWHB3d3d3d3d3d3d39/7eYw63yU7iZfL+/X6/2Wyy+WSO5CS72QeA/0m+e2A4HI7H4/F4PJ7u4e7e3t7e3t7e3t7e3t7e/v4+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+...fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+-g" alt="Logo Bruxelles Formation">
             </div>
             <div class="titre-principal">
                 <h1>Passe à OneDrive en 3 étapes !</h1>
                 <p>Ton guide visuel pour transférer tes documents</p>
             </div>
         </header>
+
+        <div class="pdf-button-container">
+            <button id="download-pdf"><i class="fa-solid fa-file-pdf"></i> Télécharger en PDF (A4)</button>
+        </div>
 
         <main>
             <!-- BLOC 1 : L'OBJECTIF -->
@@ -281,36 +320,36 @@
                 </div>
             </section>
             
-            <!-- BLOC 3 : ÉTAPE 2 - LE DÉBALLAGE -->
+            <!-- BLOC 3 : ÉTAPE 2 - LE DÉPLACEMENT -->
             <section class="etape">
                 <div class="etape-numero">2</div>
                 <div class="etape-contenu">
-                    <h2>Je décompresse le fichier .zip</h2>
+                    <h2>Je déplace le .zip dans OneDrive</h2>
                     <ol>
-                        <li>Une fois téléchargé, <b>retrouve</b> le fichier .zip sur ton ordinateur.</li>
-                        <li>Fais un clic droit dessus et choisis <b>"Extraire tout..."</b>.</li>
-                        <li>Un nouveau dossier avec tous tes documents apparaît !</li>
+                        <li><b>Ouvre</b> le dossier OneDrive qui se trouve sur ton ordinateur.</li>
+                        <li><b>Fais glisser</b> le fichier .zip téléchargé à l'intérieur.</li>
+                        <li>Attends que la synchronisation 🔄 soit terminée.</li>
+                    </ol>
+                </div>
+                <div class="etape-visuel">
+                    <i class="fa-solid fa-file-arrow-up"></i>
+                </div>
+            </section>
+
+            <!-- BLOC 4 : ÉTAPE 3 - LE DÉBALLAGE -->
+            <section class="etape">
+                <div class="etape-numero">3</div>
+                <div class="etape-contenu">
+                    <h2>Je décompresse dans OneDrive</h2>
+                    <ol>
+                        <li>Une fois dans OneDrive, fais un clic droit sur le fichier .zip.</li>
+                        <li>Choisis <b>"Extraire tout..."</b> directement ici.</li>
+                        <li>Tes fichiers apparaissent et se synchronisent !</li>
                     </ol>
                 </div>
                 <div class="etape-visuel">
                     <i class="fa-solid fa-file-zipper"></i>
                     <i class="fa-regular fa-folder-open"></i>
-                </div>
-            </section>
-
-            <!-- BLOC 4 : ÉTAPE 3 - LE RANGEMENT -->
-            <section class="etape">
-                <div class="etape-numero">3</div>
-                <div class="etape-contenu">
-                    <h2>Je déplace tout dans OneDrive</h2>
-                    <ol>
-                        <li><b>Ouvre</b> le dossier OneDrive qui se trouve sur ton ordinateur.</li>
-                        <li><b>Fais glisser</b> le dossier décompressé à l'intérieur.</li>
-                        <li>C'est tout ! La synchronisation 🔄 se lance automatiquement.</li>
-                    </ol>
-                </div>
-                <div class="etape-visuel">
-                     <i class="fa-solid fa-folder-tree"></i>
                 </div>
             </section>
 
@@ -341,6 +380,33 @@
         </footer>
 
     </div>
+
+    <!-- Librairie pour la conversion en PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" xintegrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        document.getElementById('download-pdf').addEventListener('click', function () {
+            const element = document.getElementById('element-to-print');
+            const buttonContainer = document.querySelector('.pdf-button-container');
+            
+            // On cache le bouton pour qu'il n'apparaisse pas dans le PDF
+            buttonContainer.style.display = 'none';
+
+            const opt = {
+              margin:       [10, 10, 10, 10], // marges en mm [haut, gauche, bas, droite]
+              filename:     'BF_Guide_Migration_OneDrive.pdf',
+              image:        { type: 'jpeg', quality: 0.98 },
+              html2canvas:  { scale: 2, useCORS: true }, // Augmenter l'échelle pour une meilleure qualité
+              jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Génération et sauvegarde du PDF
+            html2pdf().from(element).set(opt).save().then(() => {
+                // On réaffiche le bouton une fois le PDF généré
+                buttonContainer.style.display = 'block';
+            });
+        });
+    </script>
 
 </body>
 </html>
