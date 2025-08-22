@@ -71,7 +71,6 @@
         .logo img {
             height: 50px;
             width: auto;
-            min-width: 75px;
         }
         .titre-principal {
             text-align: right;
@@ -89,32 +88,6 @@
             font-size: 1em;
             color: #555;
             margin: 4px 0 0 0;
-        }
-
-        /* ----------------------------------- */
-        /* --- BOUTON PDF --- */
-        /* ----------------------------------- */
-        .pdf-button-container {
-            text-align: center;
-            margin: 0 0 15px 0;
-        }
-        #download-pdf {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 500;
-            font-size: 0.9em;
-            background-color: var(--bleu-bf);
-            color: var(--blanc);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        #download-pdf:hover {
-            background-color: var(--bleu-1);
-        }
-        #download-pdf i {
-            margin-right: 8px;
         }
 
         /* ----------------------------------- */
@@ -213,13 +186,8 @@
         }
         
         /* ----------------------------------- */
-        /* --- STYLES POUR L'IMPRESSION ET LE PDF --- */
-        /* ----------------------------------- */
-        .etape, .bon-a-savoir, .objectif, .header, footer, .point-crucial {
-            page-break-inside: avoid; /* Empêche la coupure à l'intérieur de ces éléments */
-        }
-
         /* --- RESPONSIVE DESIGN --- */
+        /* ----------------------------------- */
         @media (max-width: 768px) {
             body { padding: 1em; }
             .infographie { padding: 20px; }
@@ -230,13 +198,6 @@
             .etape-contenu ol { text-align: left; }
             .etape .etape-visuel { margin: 15px 0 0 0; }
         }
-
-        /* Style pour cacher le bouton lors de l'impression */
-        @media print {
-            .pdf-button-container {
-                display: none;
-            }
-        }
     </style>
 </head>
 <body>
@@ -245,17 +206,13 @@
 
         <header class="header">
             <div class="logo">
-                <img src="https://www.bruxellesformation.brussels/newsletters/img/logo/2024/BF_logo_couleur.png?x29060" alt="Logo Bruxelles Formation" crossorigin="anonymous">
+                <img src="https://www.bruxellesformation.brussels/newsletters/img/logo/2024/BF_logo_couleur.png?x29060" alt="Logo Bruxelles Formation">
             </div>
             <div class="titre-principal">
                 <h1>Passe à OneDrive en 3 étapes !</h1>
                 <p>Ton guide visuel pour transférer tes documents</p>
             </div>
         </header>
-
-        <div class="pdf-button-container">
-            <button id="download-pdf"><i class="fa-solid fa-file-pdf"></i> Télécharger en PDF (A4)</button>
-        </div>
 
         <main>
             <!-- BLOC 1 : ÉTAPE 1 - LA COLLECTE -->
@@ -343,33 +300,6 @@
         </footer>
 
     </div>
-
-    <!-- Librairie pour la conversion en PDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" xintegrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script>
-        document.getElementById('download-pdf').addEventListener('click', function () {
-            const element = document.getElementById('element-to-print');
-            const buttonContainer = document.querySelector('.pdf-button-container');
-            
-            // On cache le bouton pour qu'il n'apparaisse pas dans le PDF
-            buttonContainer.style.display = 'none';
-
-            const opt = {
-              margin:       [10, 10, 10, 10], // marges en mm [haut, gauche, bas, droite]
-              filename:     'BF_Guide_Migration_OneDrive.pdf',
-              image:        { type: 'jpeg', quality: 0.98 },
-              html2canvas:  { scale: 2, useCORS: true }, // Augmenter l'échelle pour une meilleure qualité
-              jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-
-            // Génération et sauvegarde du PDF
-            html2pdf().from(element).set(opt).save().then(() => {
-                // On réaffiche le bouton une fois le PDF généré
-                buttonContainer.style.display = 'block';
-            });
-        });
-    </script>
 
 </body>
 </html>
