@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Passe à OneDrive en 3 étapes - Bruxelles Formation</title>
+    <meta name="description" content="Guide visuel pour transférer tes documents de Google Drive vers OneDrive">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- html2pdf library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
@@ -16,16 +24,15 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
             background: #ffffff;
-            padding: 20px;
             color: #16345f;
+            line-height: 1.4;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 740px;
             margin: 0 auto;
+            padding: 16px;
             background: white;
-            padding: 40px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
         
         /* Header */
@@ -33,72 +40,97 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 40px;
+            margin-bottom: 16px;
         }
         
         .logo {
-            height: 60px;
+            height: 48px;
         }
         
         .download-btn {
             background: #16345f;
             color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
+            padding: 8px 16px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.3s;
-            cursor: pointer;
-            border: none;
             font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
         }
         
         .download-btn:hover {
             background: #1c5ea9;
         }
         
+        /* Transition Section */
+        .transition-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .service-logo {
+            text-align: center;
+        }
+        
+        .service-logo img {
+            height: 48px;
+            width: 48px;
+            margin-bottom: 4px;
+        }
+        
+        .service-logo p {
+            font-size: 12px;
+            color: #4286c6;
+            font-weight: 500;
+        }
+        
+        .arrow {
+            font-size: 24px;
+            color: #47b7a4;
+        }
+        
         /* Title */
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 42px;
+            font-size: 28px;
             font-weight: 700;
             color: #16345f;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .subtitle {
             text-align: center;
             color: #4286c6;
-            font-size: 18px;
-            margin-bottom: 50px;
+            font-size: 14px;
+            margin-bottom: 24px;
         }
         
         /* Steps */
-        .step {
-            background: linear-gradient(135deg, #f7f9fc 0%, #ffffff 100%);
-            border-left: 5px solid #16345f;
-            padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            position: relative;
-            transition: transform 0.3s, box-shadow 0.3s;
+        .steps {
+            margin-bottom: 16px;
         }
         
-        .step:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(22, 52, 95, 0.1);
+        .step {
+            background: linear-gradient(135deg, #f7f9fc 0%, #ffffff 100%);
+            border-left: 4px solid #16345f;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            position: relative;
         }
         
         .step-number {
             position: absolute;
-            left: -25px;
-            top: 25px;
-            width: 50px;
-            height: 50px;
+            left: -24px;
+            top: 16px;
+            width: 48px;
+            height: 48px;
             background: #16345f;
             color: white;
             border-radius: 50%;
@@ -106,245 +138,225 @@
             align-items: center;
             justify-content: center;
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 24px;
+            font-size: 18px;
             font-weight: 700;
+        }
+        
+        .step-content {
+            padding-left: 24px;
         }
         
         .step-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 24px;
+            font-size: 18px;
             font-weight: 700;
             color: #16345f;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
         
         .step-icon {
-            font-size: 32px;
+            font-size: 20px;
         }
         
-        .step-content {
-            padding-left: 40px;
-        }
-        
-        .step-content ol {
+        .step-list {
             list-style: none;
             counter-reset: item;
         }
         
-        .step-content li {
+        .step-list li {
             counter-increment: item;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
             position: relative;
-            padding-left: 30px;
-            line-height: 1.6;
+            padding-left: 20px;
+            font-size: 14px;
+            line-height: 1.3;
         }
         
-        .step-content li:before {
+        .step-list li:before {
             content: counter(item) ".";
             position: absolute;
             left: 0;
             font-weight: bold;
             color: #47b7a4;
+            font-size: 12px;
         }
         
         /* Important note */
         .important-note {
             background: linear-gradient(135deg, #faf7e1 0%, #f3e17b 100%);
             border: 2px solid #edcb0c;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 40px 0;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 16px 0;
             position: relative;
         }
         
         .important-note:before {
             content: "⚠️";
-            font-size: 24px;
+            font-size: 18px;
             position: absolute;
-            left: -15px;
-            top: 20px;
+            left: -12px;
+            top: 8px;
             background: white;
-            padding: 5px;
+            padding: 4px;
             border-radius: 50%;
         }
         
         .important-note-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 700;
             color: #87750e;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
+            margin-left: 24px;
         }
         
         .important-note-content {
             color: #87750e;
-            line-height: 1.6;
+            font-size: 14px;
+            line-height: 1.3;
+            margin-left: 24px;
         }
         
         /* Info boxes */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin: 40px 0;
+            gap: 12px;
+            margin: 16px 0;
         }
         
         .info-box {
             background: #e1f0fc;
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 8px;
+            padding: 12px;
             text-align: center;
-            transition: transform 0.3s;
-        }
-        
-        .info-box:hover {
-            transform: translateY(-5px);
         }
         
         .info-box-icon {
-            font-size: 36px;
-            margin-bottom: 10px;
+            font-size: 24px;
+            margin-bottom: 4px;
         }
         
         .info-box-title {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 500;
             color: #1c5ea9;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
+            font-size: 12px;
         }
         
         .info-box-text {
-            font-size: 14px;
+            font-size: 11px;
             color: #16345f;
-            line-height: 1.4;
+            line-height: 1.2;
         }
         
         /* Footer */
         .footer {
             text-align: center;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 2px solid #e1f0fc;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid #e1f0fc;
         }
         
         .footer-text {
             color: #4286c6;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
+            font-size: 12px;
         }
         
         .footer-link {
             color: #16345f;
             font-weight: bold;
             text-decoration: none;
+            font-size: 12px;
         }
         
         .footer-link:hover {
             color: #4286c6;
             text-decoration: underline;
         }
-        
-        /* Print styles */
-        @media print {
-            body {
-                padding: 0;
-            }
-            .container {
-                box-shadow: none;
-                padding: 20px;
-                max-width: 100%;
-            }
-            .download-btn {
-                display: none;
-            }
-            .step {
-                page-break-inside: avoid;
-            }
-            h1 {
-                font-size: 32px;
-            }
-            .step-title {
-                font-size: 20px;
-            }
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-            h1 {
-                font-size: 32px;
-            }
-            .container {
-                padding: 20px;
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="infographic-content">
         <!-- Header -->
         <div class="header">
-            <img src="https://www.bruxellesformation.brussels/newsletters/img/logo/2024/BF_logo_couleur.png?x29060" 
-                 alt="Bruxelles Formation" 
-                 class="logo">
-            <button class="download-btn" onclick="window.print()">
-                📥 Télécharger en PDF
+            <img src="images/bf-logo.png" alt="Bruxelles Formation" class="logo">
+            <button class="download-btn" onclick="generatePDF()">
+                📥 PDF
             </button>
+        </div>
+        
+        <!-- Transition Section -->
+        <div class="transition-section">
+            <div class="service-logo">
+                <img src="images/google-drive-logo.png" alt="Google Drive">
+                <p>Google Drive</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="service-logo">
+                <img src="images/onedrive-logo.png" alt="OneDrive">
+                <p>OneDrive</p>
+            </div>
         </div>
         
         <!-- Title -->
         <h1>Passe à OneDrive en 3 étapes !</h1>
         <p class="subtitle">Ton guide visuel pour transférer tes documents</p>
         
-        <!-- Step 1 -->
-        <div class="step">
-            <div class="step-number">1</div>
-            <div class="step-title">
-                Je télécharge mes fichiers
-                <span class="step-icon">☁️</span>
+        <!-- Steps -->
+        <div class="steps">
+            <!-- Step 1 -->
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">
+                        Je télécharge mes fichiers
+                        <span class="step-icon">☁️</span>
+                    </div>
+                    <ol class="step-list">
+                        <li><strong>Connecte-toi</strong> à ton Google Drive sur internet.</li>
+                        <li><strong>Sélectionne</strong> les fichiers et dossiers que tu veux transférer.</li>
+                        <li>Fais un clic droit et choisis <strong>"Télécharger"</strong> pour créer un fichier .zip.</li>
+                    </ol>
+                </div>
             </div>
-            <div class="step-content">
-                <ol>
-                    <li><strong>Connecte-toi</strong> à ton Google Drive sur internet.</li>
-                    <li><strong>Sélectionne</strong> les fichiers et dossiers que tu veux transférer.</li>
-                    <li>Fais un clic droit et choisis <strong>"Télécharger"</strong> pour créer un fichier .zip.</li>
-                </ol>
+            
+            <!-- Step 2 -->
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">
+                        Je décompresse sur mon PC
+                        <span class="step-icon">📁</span>
+                    </div>
+                    <ol class="step-list">
+                        <li>Retrouve le fichier .zip dans tes <strong>"Téléchargements"</strong>.</li>
+                        <li>Fais un clic droit dessus et choisis <strong>"Extraire tout..."</strong>.</li>
+                        <li>Un nouveau dossier avec tous les documents apparaît !</li>
+                    </ol>
+                </div>
             </div>
-        </div>
-        
-        <!-- Step 2 -->
-        <div class="step">
-            <div class="step-number">2</div>
-            <div class="step-title">
-                Je décompresse sur mon PC
-                <span class="step-icon">📁</span>
-            </div>
-            <div class="step-content">
-                <ol>
-                    <li>Retrouve le fichier .zip dans tes <strong>"Téléchargements"</strong>.</li>
-                    <li>Fais un clic droit dessus et choisis <strong>"Extraire tout..."</strong>.</li>
-                    <li>Un nouveau dossier avec tous les documents apparaît !</li>
-                </ol>
-            </div>
-        </div>
-        
-        <!-- Step 3 -->
-        <div class="step">
-            <div class="step-number">3</div>
-            <div class="step-title">
-                Je déplace dans OneDrive
-                <span class="step-icon">📤</span>
-            </div>
-            <div class="step-content">
-                <ol>
-                    <li><strong>Ouvre</strong> le dossier OneDrive qui se trouve sur ton ordinateur.</li>
-                    <li><strong>Fais glisser</strong> le nouveau dossier (pas le .zip) à l'intérieur.</li>
-                    <li>C'est tout ! La synchronisation 🔄 se lance automatiquement.</li>
-                </ol>
+            
+            <!-- Step 3 -->
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">
+                        Je déplace dans OneDrive
+                        <span class="step-icon">📤</span>
+                    </div>
+                    <ol class="step-list">
+                        <li><strong>Ouvre</strong> le dossier OneDrive qui se trouve sur ton ordinateur.</li>
+                        <li><strong>Fais glisser</strong> le nouveau dossier (pas le .zip) à l'intérieur.</li>
+                        <li>C'est tout ! La synchronisation 🔄 se lance automatiquement.</li>
+                    </ol>
+                </div>
             </div>
         </div>
         
@@ -352,7 +364,7 @@
         <div class="important-note">
             <div class="important-note-title">Point crucial : Faire le ménage !</div>
             <div class="important-note-content">
-                Une fois la synchronisation terminée (coche verte ✅ sur les dossiers), tu peux <strong>supprimer le fichier .zip et le dossier de tes "Téléchargements"</strong> pour libérer de l'espace sur ton PC.
+                Une fois la synchronisation terminée (coche verte ✅), tu peux <strong>supprimer le fichier .zip et le dossier de tes "Téléchargements"</strong> pour libérer de l'espace sur ton PC.
             </div>
         </div>
         
@@ -362,7 +374,7 @@
                 <div class="info-box-icon">📄</div>
                 <div class="info-box-title">Documents Office</div>
                 <div class="info-box-text">
-                    Tes Google Docs deviennent des fichiers Word, Excel, etc. Pense à vérifier la mise en page des documents importants.
+                    Tes Google Docs deviennent des fichiers Word, Excel, etc. Vérifier la mise en page.
                 </div>
             </div>
             
@@ -370,7 +382,7 @@
                 <div class="info-box-icon">🔗</div>
                 <div class="info-box-title">Liens de partage</div>
                 <div class="info-box-text">
-                    Attention, les anciens liens de partage sont désactivés. Tu devras partager les fichiers à nouveau depuis OneDrive.
+                    Les anciens liens sont désactivés. Tu devras partager à nouveau depuis OneDrive.
                 </div>
             </div>
             
@@ -378,14 +390,14 @@
                 <div class="info-box-icon">💾</div>
                 <div class="info-box-title">Espace de stockage</div>
                 <div class="info-box-text">
-                    Ton espace OneDrive est de <strong>50 Go</strong>. Le ménage après transfert est donc une bonne habitude !
+                    Ton espace OneDrive est de <strong>50 Go</strong>. Le ménage est une bonne habitude !
                 </div>
             </div>
         </div>
         
         <!-- Footer -->
         <div class="footer">
-            <p class="footer-text">Un problème ? Une question ? Tu peux contacter le support BF-TICE via un</p>
+            <p class="footer-text">Un problème ? Une question ? Contacte le support BF-TICE via un</p>
             <a href="https://magellan.bruxellesformation.brussels/home/ls/content/6051598212005888/guichets-numeriques-bftice" 
                class="footer-link" 
                target="_blank">
@@ -393,5 +405,31 @@
             </a>
         </div>
     </div>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById('infographic-content');
+            const opt = {
+                margin: [10, 10, 10, 10],
+                filename: 'OneDrive-Guide-BruxellesFormation.pdf',
+                image: { type: 'jpeg', quality: 0.95 },
+                html2canvas: { 
+                    scale: 1.5,
+                    useCORS: true,
+                    letterRendering: true,
+                    allowTaint: true,
+                    height: 1050,
+                    width: 740
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait' 
+                }
+            };
+            
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
 </body>
 </html>
